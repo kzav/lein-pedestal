@@ -1,0 +1,48 @@
+# lein-pedestal
+
+Very much a work in progress.
+
+Please take a look in the code until real documentation is written.
+
+These are the available options and some of their defaults.  In your `project.clj`:
+```clojure
+:pedestal {:servlet-description "Pedestal HTTP Servlet" ;; default if not supplied
+           :servlet-display-name "Pedestal HTTP Servlet" ;; default if not supplied
+           :servlet-name "PedestalServlet" ;; default if not supplied
+           :servlet-class "io.pedestal.servlet.ClojureVarServlet" ;; default if not supplied
+           :server-ns "YOU NEED TO SUPPLY THIS"
+           :url-pattern "/*"
+           :web-xml "war-resources/WEB-INF/web.xml" ;; optional: use this instead of generating
+           :war-resource-paths ["war-resources"]
+           :manifest {"Created-By" "Joe Company"} ;; merged into defaults
+           :war-name "blah.war" ;; defaults to project name and version
+           :uberwar-name "blah-standalone.war" ;; defaults to project name and version -standalone
+           :war-exclusions [#"immutant\.init\.clj" #"^.+/web\.xml$" #"^.+/myapp-.+.conf$" #"^.+/logback-test\.xml$" ] ;; optional: a vector of regex strings
+           :include-compile-path false}
+```
+
+## Usage
+
+### Use this for user-level plugins:
+
+Put `[ohpauleez/lein-pedestal "0.1.0-beta10"]` into the `:plugins` vector of your
+`:user` profile or...
+
+### Use this for project-level plugins:
+
+Put `[ohpauleez/lein-pedestal "0.1.0-beta10"]` into the `:plugins` vector of your project.clj.
+
+FIXME: and add an example usage that actually makes sense:
+
+    $ lein pedestal [war | uberwar | help]
+
+You can supply a war/jar name from the command line:
+
+    $ lein pedestal uberwar my-project.war
+
+## License
+
+Copyright Paul deGrandis © 2013
+
+Distributed under the Eclipse Public License, the same as Clojure.
+
